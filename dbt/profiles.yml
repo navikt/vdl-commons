@@ -6,7 +6,7 @@ vdl_commons_profile:
       account: "wx23413.europe-west4.gcp"
       user: "{{ env_var('DBT_USR') }}"
       password: "{{ env_var('DBT_PWD') }}"
-      role: commons_tranformer
+      role: "commons_transformer"
       database: "{{ env_var('COMMONS_DB') }}"
       warehouse: "commons_transformer"
       schema: "public"
@@ -41,9 +41,9 @@ vdl_commons_profile:
       role: "comons_transformer"
       # SSO config
       authenticator: externalbrowser
-      database: "{{ env_var('REGNSKAP_DB') }}"
+      database: "{{ env_var('COMMONS_DB') }}"
       warehouse: "commons_transformer"
-      schema: "PUBLIC"
+      schema: "public"
       threads: 1
       client_session_keep_alive: False
       reuse_connections: True

@@ -8,7 +8,7 @@ vdl_commons_profile:
       password: "{{ env_var('DBT_PWD') }}"
       role: commons_tranformer
       database: "{{ env_var('COMMONS_DB') }}"
-      warehouse: project_transformer
+      warehouse: "commons_transformer"
       schema: "public"
       threads: 1
       client_session_keep_alive: False

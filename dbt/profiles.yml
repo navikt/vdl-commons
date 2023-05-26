@@ -38,11 +38,11 @@ vdl_commons_profile:
       type: snowflake
       account: "wx23413.europe-west4.gcp"
       user: "{{ env_var('DBT_USR') }}"
-      role: "regnskap_transformer"
+      role: "comons_transformer"
       # SSO config
       authenticator: externalbrowser
       database: "{{ env_var('REGNSKAP_DB') }}"
-      warehouse: "regnskap_transformer"
+      warehouse: "commons_transformer"
       schema: "PUBLIC"
       threads: 1
       client_session_keep_alive: False

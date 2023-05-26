@@ -1,16 +1,24 @@
 #dbt
-dbt-snowflake
+dbt-snowflake==1.5.0
 
 # gcp
-google-cloud-secret-manager
+google-cloud-secret-manager==2.16.1
 
 # app
-uvicorn
-fastapi
+uvicorn==0.21.1
+fastapi==0.95.1
+pydantic==1.10.7
 
 # auth
 pyjwt[crypto]
 
 # internal
-inbound-core @ git+https://github.com/navikt/inbound-core.git@6d2d5033d185494b3b8d2f7d22486cd81ff867a9
-snowbird @ git+https://github.com/navikt/snowbird.git@5e10f2650c640bf17ad8fea601255b9710c5dbe7
+inbound-core @ git+https://github.com/navikt/inbound-core@ff36ba4c168dfec2183454fae7fa82b53e179047
+snowbird @ git+https://github.com/navikt/snowbird@5e10f2650c640bf17ad8fea601255b9710c5dbe7
+
+#Orchestration
+prefect==2.10.5
+
+#Transitative dependencies
+cx-Oracle==8.3.0
+PyYAML==6.0

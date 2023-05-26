@@ -34,5 +34,18 @@ vdl_commons_profile:
       schema: "public"
       threads: 1
       client_session_keep_alive: False
+    sso:
+      type: snowflake
+      account: "wx23413.europe-west4.gcp"
+      user: "{{ env_var('DBT_USR') }}"
+      role: "regnskap_transformer"
+      # SSO config
+      authenticator: externalbrowser
+      database: "{{ env_var('REGNSKAP_DB') }}"
+      warehouse: "regnskap_transformer"
+      schema: "PUBLIC"
+      threads: 1
+      client_session_keep_alive: False
+      reuse_connections: True
 config:
   send_anonymous_usage_stats: False

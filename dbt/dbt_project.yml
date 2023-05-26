@@ -1,4 +1,4 @@
-name: "<project name>"
+name: "vdl_commons"
 version: "0.0.1"
 config-version: 2
 
@@ -7,11 +7,11 @@ vars:
   use_force_applying_masking_policy: "True"
   use_common_masking_policy_schema_only: "True"
   use_common_masking_policy_db: "False"
-  common_masking_policy_db: "{{ env_var('<PROJECT_DB>') }}"
+  common_masking_policy_db: "{{ env_var('COMMONS_DB') }}"
   common_masking_policy_schema: "policies"
   "dbt_date:time_zone": "Oslo"
 
-profile: "<project_name_profile>"
+profile: "vdl_commons_profile"
 
 model-paths: ["models"]
 analysis-paths: ["analysis"]
@@ -29,7 +29,7 @@ models:
   +persist_docs:
     relation: true
     columns: true
-  <prject name>:
+  vdl_commons:
     stages:
       +schema: "stages"
     marts:

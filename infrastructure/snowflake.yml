@@ -75,7 +75,7 @@ roles:
           - commons.intermediates.*
       owner: useradmin
 
-  - commons_reporting:
+  - commons_reporter:
       warehouses:
         - commons_user
       privileges:

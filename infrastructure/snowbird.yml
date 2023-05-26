@@ -2,7 +2,7 @@ version: "1.0"
 
 # Databases
 databases:
-  - <project>:
+  - commons:
       shared: no
       owner: sysadmin
       schemas:
@@ -13,92 +13,92 @@ databases:
         - marts
 # Roles
 roles:
-  - <project>_loader:
+  - commons_loader:
       warehouses:
-        - <project>_loader
+        - commons_loader
       privileges:
         databases:
           read:
-            - <project>
+            - commons
         schemas:
           read:
-            - <project>.raw
+            - commons.raw
           write:
-            - <project>.raw
+            - commons.raw
         tables:
           read:
-            - <project>.raw.*
+            - commons.raw.*
           write:
-            - <project>.raw.*
+            - commons.raw.*
       owns:
         tables:
-          - <project>.raw.*
+          - commons.raw.*
       owner: useradmin
 
-  - <project>_transformer:
+  - commons_transformer:
       member_of:
         - commons_owner
       warehouses:
-        - <project>_transformer
+        - commons_transformer
       privileges:
         databases:
           read:
-            - <project>
+            - commons
         schemas:
           read:
-            - <project>.raw
-            - <project>.stages
-            - <project>.policies
-            - <project>.marts
+            - commons.raw
+            - commons.stages
+            - commons.policies
+            - commons.marts
           write:
-            - <project>.stages
-            - <project>.policies
-            - <project>.marts
-            - <project>.intermediates
+            - commons.stages
+            - commons.policies
+            - commons.marts
+            - commons.intermediates
         tables:
           read:
-            - <project>.raw.*
-            - <project>.stages.*
-            - <project>.policies.*
-            - <project>.marts.*
-            - <project>.intermediates.*
+            - commons.raw.*
+            - commons.stages.*
+            - commons.policies.*
+            - commons.marts.*
+            - commons.intermediates.*
           write:
-            - <project>.stages.*
-            - <project>.policies.*
-            - <project>.marts.*
-            - <project>.intermediates.*
+            - commons.stages.*
+            - commons.policies.*
+            - commons.marts.*
+            - commons.intermediates.*
       owns:
         tables:
-          - <project>.stages.*
-          - <project>.policies.*
-          - <project>.marts.*
-          - <project>.intermediates.*
+          - commons.stages.*
+          - commons.policies.*
+          - commons.marts.*
+          - commons.intermediates.*
       owner: useradmin
 
-  - <project>_reporting:
+  - commons_reporting:
       warehouses:
-        - <project>_user
+        - commons_user
       privileges:
         databases:
           read:
-            - <project>
+            - commons
         schemas:
           read:
-            - <project>.marts
+            - commons.marts
         tables:
           read:
-            - <project>.marts.*
+            - commons.marts.*
       owner: useradmin
 
 warehouses:
-  - <project>_loader:
+  - commons_loader:
       size: x-small
       owner: sysadmin
 
-  - <project>_transformer:
+  - commons_transformer:
       size: x-small
       owner: sysadmin
 
-  - <project>_user:
+  - commons_user:
       size: x-small
       owner: sysadmin

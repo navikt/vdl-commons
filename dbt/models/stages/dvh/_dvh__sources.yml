@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: dvh
+    schema: raw
+    tables:
+      - name: csv__dim_tid

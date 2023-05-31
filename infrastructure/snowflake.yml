@@ -1,0 +1,104 @@
+version: "1.0"
+
+# Databases
+databases:
+  - commons:
+      shared: no
+      owner: sysadmin
+      schemas:
+        - raw
+        - stages
+        - intermediates
+        - policies
+        - marts
+# Roles
+roles:
+  - commons_loader:
+      warehouses:
+        - commons_loader
+      privileges:
+        databases:
+          read:
+            - commons
+        schemas:
+          read:
+            - commons.raw
+          write:
+            - commons.raw
+        tables:
+          read:
+            - commons.raw.*
+          write:
+            - commons.raw.*
+      owns:
+        tables:
+          - commons.raw.*
+      owner: useradmin
+
+  - commons_transformer:
+      member_of:
+        - commons_owner
+      warehouses:
+        - commons_transformer
+      privileges:
+        databases:
+          read:
+            - commons
+        schemas:
+          read:
+            - commons.raw
+            - commons.stages
+            - commons.policies
+            - commons.marts
+          write:
+            - commons.stages
+            - commons.policies
+            - commons.marts
+            - commons.intermediates
+        tables:
+          read:
+            - commons.raw.*
+            - commons.stages.*
+            - commons.policies.*
+            - commons.marts.*
+            - commons.intermediates.*
+          write:
+            - commons.stages.*
+            - commons.policies.*
+            - commons.marts.*
+            - commons.intermediates.*
+      owns:
+        tables:
+          - commons.stages.*
+          - commons.policies.*
+          - commons.marts.*
+          - commons.intermediates.*
+      owner: useradmin
+
+  - commons_reporter:
+      warehouses:
+        - commons_user
+      privileges:
+        databases:
+          read:
+            - commons
+        schemas:
+          read:
+            - commons.marts
+        tables:
+          read:
+            - commons.marts.*
+      owner: useradmin
+
+warehouses:
+  - commons_loader:
+      size: x-small
+      owner: sysadmin
+
+  - commons_transformer:
+      size: x-small
+      owner: sysadmin
+
+  - commons_user:
+      size: x-small
+      owner: sysadmin

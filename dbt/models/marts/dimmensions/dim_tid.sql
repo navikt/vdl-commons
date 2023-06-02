@@ -8,7 +8,7 @@
 with
 
 dim_tid as (
-  select * from {{ ref('stg_dvh__dim_tid') }}
+  select * from {{ ref('int_dim_tid__finn_neste_virkedag') }}
 ),
 
 last_year as (

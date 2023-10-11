@@ -42,6 +42,7 @@ final as (
   select
     dim_tid.*,
     last_year.fjor_dato,
+    last_year.fjor_aar_uke,
     last_year.fjor_aar_maaned,
     last_year.fjor_aar_kvartal,
     last_year.fjor_aar_tertial,

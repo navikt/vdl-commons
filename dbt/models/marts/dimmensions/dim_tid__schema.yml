@@ -1,0 +1,260 @@
+version: 2
+
+models:
+  - name: dim_tid
+    config:
+      contract:
+        enforced: true
+    description: ""
+    columns:
+      - name: neste_virkedag
+        data_type: date
+        description: ""
+
+      - name: pk_dim_tid
+        data_type: number
+        description: ""
+
+      - name: dato
+        data_type: date
+        description: ""
+
+      - name: dag_nr
+        data_type: number
+        description: ""
+
+      - name: ukedag_navn
+        data_type: varchar(200)
+        description: ""
+
+      - name: dag_i_uke
+        data_type: number
+        description: ""
+
+      - name: dag_i_maaned
+        data_type: number
+        description: ""
+
+      - name: siste_i_maaned_flagg
+        data_type: number
+        description: ""
+
+      - name: uke
+        data_type: number
+        description: ""
+
+      - name: uke_sak
+        data_type: number
+        description: ""
+
+      - name: uke_sak_lorfre
+        data_type: number
+        description: ""
+
+      - name: aar_uke
+        data_type: number
+        description: ""
+
+      - name: aar_uke_sak
+        data_type: number
+        description: ""
+
+      - name: aar_uke_sak_lorfre
+        data_type: number
+        description: ""
+
+      - name: aar_uke_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_uke_sak_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_uke_sak_lorfre_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: maaned
+        data_type: number
+        description: ""
+
+      - name: maaned_navn
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_maaned
+        data_type: number
+        description: ""
+
+      - name: aar_maaned_besk_kort
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_maaned_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: kvartal
+        data_type: number
+        description: ""
+
+      - name: kvartal_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_kvartal
+        data_type: number
+        description: ""
+
+      - name: aar_kvartal_besk_kort
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_kvartal_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: tertial
+        data_type: number
+        description: ""
+
+      - name: aar_tertial
+        data_type: number
+        description: ""
+
+      - name: aar_tertial_besk_kort
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_tertial_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: halvaar
+        data_type: number
+        description: ""
+
+      - name: aar_halvaar
+        data_type: number
+        description: ""
+
+      - name: aar_halvaar_besk_kort
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar_halvaar_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: aar
+        data_type: number
+        description: ""
+
+      - name: juli_juni_besk_kort
+        data_type: varchar(200)
+        description: ""
+
+      - name: juli_juni_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: stat_siste_i_maaned_flagg
+        data_type: number
+        description: ""
+
+      - name: stat_maaned
+        data_type: number
+        description: ""
+
+      - name: stat_maaned_navn
+        data_type: varchar(200)
+        description: ""
+
+      - name: stat_aar_maaned
+        data_type: number
+        description: ""
+
+      - name: stat_aar_maaned_besk_kort
+        data_type: varchar(200)
+        description: ""
+
+      - name: stat_aar_maaned_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: stat_aar
+        data_type: number
+        description: ""
+
+      - name: fem_aar_gruppe_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: ti_aar_gruppe_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: hundre_aar_gruppe_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: virkedag_flagg
+        data_type: number
+        description: ""
+
+      - name: virkedag_antall
+        data_type: number
+        description: ""
+
+      - name: virkedag_sak_antall
+        data_type: number
+        description: ""
+
+      - name: virkedag_besk
+        data_type: varchar(200)
+        description: ""
+
+      - name: dim_nivaa
+        data_type: number
+        description: ""
+
+      - name: forste_dato_i_perioden
+        data_type: date
+        description: ""
+
+      - name: siste_dato_i_perioden
+        data_type: date
+        description: ""
+
+      - name: fjor_dato
+        data_type: date
+        description: ""
+
+      - name: fjor_aar_uke
+        data_type: number
+        description: ""
+
+      - name: fjor_aar_maaned
+        data_type: number
+        description: ""
+
+      - name: fjor_aar_kvartal
+        data_type: number
+        description: ""
+
+      - name: fjor_aar_tertial
+        data_type: number
+        description: ""
+
+      - name: fjor_aar_halvaar
+        data_type: number
+        description: ""
+
+      - name: fjor_aar
+        data_type: number
+        description: ""
+
+      - name: tertial_besk
+        data_type: varchar(200)
+        description: ""

@@ -1,5 +1,5 @@
 vdl_commons_profile:
-  target: transformer
+  target: "{{ env_var('DBT_TARGET', 'transformer') }}"
   outputs:
     transformer:
       type: "snowflake"
@@ -38,7 +38,7 @@ vdl_commons_profile:
       type: snowflake
       account: "wx23413.europe-west4.gcp"
       user: "{{ env_var('DBT_USR') }}"
-      role: "comons_transformer"
+      role: "commons_transformer"
       # SSO config
       authenticator: externalbrowser
       database: "{{ env_var('COMMONS_DB') }}"

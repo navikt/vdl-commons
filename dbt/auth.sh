@@ -1,4 +1,5 @@
 #!/bin/bash
+export DBT_TARGET='sso'
 use="n"
 if [ $DBT_USR ]; then
   echo "Current user:" $DBT_USR
@@ -14,26 +15,6 @@ if [ $use = 'n' ]; then
   export DBT_USR=$username
 fi
 
-if [ $use = 'n' ]; then
-  echo "Use SSO? y/N"
-  read sso
-  sso=${sso:-n}
-fi
-
-if [ $sso = 'y' ]; then
-  export DBT_TARGET='dev_sso'
-fi
-
-if [ $sso = 'n' ]; then
-  unset DBT_TARGET
-fi
-
-if [[ $use = 'n' || $sso = 'n' && -z ${DBT_PWD+x} ]]; then
-  echo "Password:"
-  read -s password
-  echo ""
-  export DBT_PWD=$password
-fi
 
 use="n"
 if [ $COMMONS_DB ]; then
@@ -48,7 +29,7 @@ prod_db=commons
 
 if [[ -z ${COMMONS_DB+x} || $use = 'n' ]]; then
   echo "Choose a database:"
-  select db in $prod_db dev_$prod_db dev_"$prod_db"_$USER other; do
+  select db in $prod_db dev_"$USER"_"$prod_db" other; do
     break;
   done
   if [ $db = 'other' ]; then

@@ -17,7 +17,7 @@ inbound-core @ git+https://github.com/navikt/inbound-core@ff36ba4c168dfec2183454
 snowbird @ git+https://github.com/navikt/snowbird@5e10f2650c640bf17ad8fea601255b9710c5dbe7
 
 #Orchestration
-prefect==2.10.5
+prefect==2.14.3
 
 #Transitative dependencies
 cx-Oracle==8.3.0

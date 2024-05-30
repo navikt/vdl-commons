@@ -3,9 +3,6 @@
 __pycache__
 .pytest_cache
 
-#vscode
-.vscode
-
 #dbt
 dbt/target
 dbt/dbt_packages

@@ -1,20 +1,13 @@
 #!/bin/bash
 export DBT_TARGET='sso'
-use="n"
-if [ $DBT_USR ]; then
-  echo "Current user:" $DBT_USR
-  echo "Do you still want to use the current user? Y/n"
-  read  use
-  echo ""
-  use=${use:-y}
-fi
 
-if [ $use = 'n' ]; then
+if [[ -z ${DBT_USR+x} ]]; then
   echo "Username:"
   read username
   export DBT_USR=$username
 fi
 
+echo "Current user:" $DBT_USR
 
 use="n"
 if [ $COMMONS_DB ]; then
@@ -49,10 +42,5 @@ if [ $COMMONS_DB != $prod_db ]; then
 fi
 
 if [ $recreate_db = 'y' ]; then
-  echo "Here is script you can run in snowflake:"
-  echo ""
-  echo "create or replace database $COMMONS_DB clone $prod_db;"
-  echo "grant usage on database $COMMONS_DB to role "$prod_db"_loader;"
-  echo "grant usage on database $COMMONS_DB to role "$prod_db"_transformer;"
-  echo "grant usage on database $COMMONS_DB to role "$prod_db"_reporter;"
+  snowbird clone $prod_db $COMMONS_DB --usage "$prod_db"_transformer
 fi

@@ -1,5 +1,0 @@
-black
-isort
-pytest
-sqlfluff
-pygit2

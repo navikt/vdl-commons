@@ -1,51 +1,23 @@
 SHELL = /bin/bash
-.DEFAULT_GOAL = format
+.DEFAULT_GOAL = install
 
-ifeq ($(OS),Windows_NT)
-	BIN = Scripts
-else
-	BIN = bin
-endif
+VENV = ./.venv/bin/activate
+PY = ./.venv/bin/python -m
+PY_LOCK = ./.venv-lock/bin/python -m
 
-VENV = .venv
-PY =$(VENV)/$(BIN)/python -m 
-
-pkg_src = main.py api inbound dbt
-tests_src = tests
-
-isort = $(PY) isort $(pkg_src) $(tests_src)
-black = $(PY) black $(pkg_src) $(tests_src)
-flake8 = $(PY) flake8 $(pkg_src) $(tests_src)
-
-auth:
-	gcloud auth login --update-adc
-
+.PHONY: install ## install requirements in virtual env
 install:
-	python3.11 -m venv $(VENV) && \
+	rm -rf .venv
+	python3.11 -m venv .venv && \
 		${PY} pip install --upgrade pip && \
-		${PY} pip install -r requirements.txt
+		${PY} pip install -r requirements-lock.txt
 
-install_dev:
-	python3.11 -m venv $(VENV) && \
-		${PY} pip install --upgrade pip && \
-		${PY} pip install -r requirements.txt && \
-		${PY} pip install -r requirements_dev.txt
+_lock-file:
+	python3.11 -m venv .venv-lock && \
+		${PY_LOCK} pip install --upgrade pip && \
+		${PY_LOCK} pip install -r requirements.txt && \
+		${PY_LOCK} pip freeze > requirements-lock.txt
+	rm -rf .venv-lock
 
-## Auto-format the source code (isort, black)
-format:
-	$(isort)
-	$(black)
-
-dev:
-	uvicorn main:app --reload
-
-test:
-	pytest ./tests
-
-#TODO
-#ui:
-#	echo "PROJECT_ID":"virksomhetsdatalaget-dev-30e3" && \
-#	$(VENV)/$(BIN)/python ./scripts/download_ui.py
-
-run_dbt:
-	../.venv/bin/dbt run --profiles-dir . --target transformer
+.PHONY: lock-file ## Create pip-lockfile and install its dependencies
+lock-file: _lock-file install

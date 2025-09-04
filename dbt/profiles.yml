@@ -47,5 +47,31 @@ vdl_commons_profile:
       threads: 1
       client_session_keep_alive: False
       reuse_connections: True
+    dev:
+      type: snowflake
+      account: "wx23413.europe-west4.gcp"
+      user: "{{ env_var('DBT_USR') }}"
+      role: "commons_transformer"
+      # SSO config
+      authenticator: externalbrowser
+      database: "dev_{{ env_var('DEV_NAME') }}_commons"
+      warehouse: "commons_transformer"
+      schema: "PUBLIC"
+      threads: 1
+      client_session_keep_alive: False
+      reuse_connections: True
+    prod:
+      type: snowflake
+      account: "wx23413.europe-west4.gcp"
+      user: "{{ env_var('DBT_USR') }}"
+      role: "commons_transformer"
+      # SSO config
+      authenticator: externalbrowser
+      database: "commons"
+      warehouse: "commons_transformer"
+      schema: "PUBLIC"
+      threads: 1
+      client_session_keep_alive: False
+      reuse_connections: True
 config:
   send_anonymous_usage_stats: False
